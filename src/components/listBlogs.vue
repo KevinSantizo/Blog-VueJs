@@ -1,17 +1,15 @@
 <template>
     <div id="show-blogs">
-        <h1>All Blogs Articles published</h1>   
+        <h1>List Blogs Titles</h1>   
         <input type="text" v-model="search" placeholder="Search blogs">
         <div v-for="blog in filteredBlogs" class="single-blog">
             <h2 v-rainbow>{{ blog.title | to-uppercase }}</h2>
-            <article>{{ blog.body | snippet}}</article>
         </div>
     </div>
 </template>
 
 <script>
 import searchMixin from '../mixins/searchMixin'
-
 export default {
     data(){
         return {
@@ -27,9 +25,8 @@ export default {
             this.blogs = data.body.slice(0, 10)            
         })
     },
-    mixins: [searchMixin],
     computed: {
-        
+
     },
     filters: {
         toUppercase(value){
@@ -44,6 +41,7 @@ export default {
             }
         }
     },
+    mixins: [searchMixin]
 }
 </script>
 
